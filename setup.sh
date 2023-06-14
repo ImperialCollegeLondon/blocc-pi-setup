@@ -48,4 +48,6 @@ then
     sudo sed -i "s|^exit 0.*$|# Run batman-adv at boot time\n$start_script\n\nexit 0|" "$rc_local_file"
 fi
 
+echo "${C_BLUE}Copying the bat-hosts...${C_BLUE}"
+sudo cp ./bat-hosts /etc
 
