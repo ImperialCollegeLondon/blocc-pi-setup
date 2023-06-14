@@ -8,7 +8,7 @@ C_YELLOW='\033[1;33m'
 C_GREEN='\033[0;32m'
 
 
-echo -e "${C_BLUE}Starting setup...\n${C_BLUE}"
+echo "${C_BLUE}Starting setup...${C_BLUE}"
 
 function install_package {
   local package=$1
