@@ -1,0 +1,5 @@
+auto wlan0
+iface wlan0 inet manualwlan
+    wireless-channel 1
+    wireless-essid blocc-mesh
+    wireless-mode ad-hoc
