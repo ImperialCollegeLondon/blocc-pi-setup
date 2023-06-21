@@ -2,25 +2,11 @@
 
 set -e
 
-C_BLUE='\033[0;34m'
-C_RED='\033[0;31m'
-C_YELLOW='\033[1;33m'
-C_GREEN='\033[0;32m'
+source utils.sh
 
+echo -e "${C_BLUE}Starting setup...${C_BLUE}"
 
-echo "${C_BLUE}Starting setup...${C_BLUE}"
-
-function install_package {
-  local package=$1
-  if dpkg -l $package; then
-    echo "${C_GREEN}$package is already installed.${C_GREEN}"
-  else
-    echo "${C_BLUE}Installing $package...${C_BLUE}"
-    sudo apt-get install -y $package
-  fi
-}
-
-echo "${C_BLUE}Loading batman-adv at boot time...${C_BLUE}"
+echo -e "${C_BLUE}Loading batman-adv at boot time...${C_BLUE}"
 echo 'batman-adv' | sudo tee --append /etc/modules
 
 install_package batctl
