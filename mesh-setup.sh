@@ -37,3 +37,5 @@ fi
 echo -e "${C_BLUE}Copying the bat-hosts...${C_RESET}"
 sudo cp ./bat-hosts /etc
 
+echo -e "${C_YELLOW}Rebooting now...${C_RESET}"
+sudo reboot
