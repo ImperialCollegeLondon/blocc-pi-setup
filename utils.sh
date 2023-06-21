@@ -8,7 +8,7 @@ C_RESET='\033[0m'
 
 function install_package {
   local package=$1
-  if dpkg -l $package; then
+  if dpkg -s $package &> /dev/null; then
     echo -e "${C_RED}$package is already installed.${C_RESET}"
   else
     echo -e "${C_YELLOW}Installing $package...${C_RESET}"
