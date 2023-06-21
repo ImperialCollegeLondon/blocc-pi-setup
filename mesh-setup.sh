@@ -11,18 +11,18 @@ echo 'batman-adv' | sudo tee --append /etc/modules
 
 install_package batctl
 
-echo "${C_BLUE}Copying the start script...${C_BLUE}"
+echo -e "${C_BLUE}Copying the start script...${C_BLUE}"
 
 mkdir -p ~/mesh
 cp ./start-batman-adv.sh ~/mesh
 
-echo "${C_BLUE}Copying the wlan0 interface definition...${C_BLUE}"
+echo -e "${C_BLUE}Copying the wlan0 interface definition...${C_BLUE}"
 sudo cp ./wlan0 /etc/network/interfaces.d
 
-echo "${C_BLUE}Disabling DHCP client from managing wlan0...${C_BLUE}"
+echo -e "${C_BLUE}Disabling DHCP client from managing wlan0...${C_BLUE}"
 echo 'denyinterfaces wlan0' | sudo tee --append /etc/dhcpcd.conf
 
-echo "${C_BLUE}Running start-batman-adv.sh at boot time...${C_BLUE}"
+echo -e "${C_BLUE}Running start-batman-adv.sh at boot time...${C_BLUE}"
 start_script="/home/pi/mesh/start-batman-adv.sh"
 rc_local_file="/etc/rc.local"
 
@@ -34,6 +34,6 @@ then
     sudo sed -i "s|^exit 0.*$|# Run batman-adv at boot time\n$start_script\n\nexit 0|" "$rc_local_file"
 fi
 
-echo "${C_BLUE}Copying the bat-hosts...${C_BLUE}"
+echo -e "${C_BLUE}Copying the bat-hosts...${C_BLUE}"
 sudo cp ./bat-hosts /etc
 
