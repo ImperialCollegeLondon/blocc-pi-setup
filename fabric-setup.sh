@@ -30,7 +30,7 @@ else
   curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh && chmod +x install-fabric.sh
 
   echo -e "${C_BLUE}Installing Hyperledger Fabric binaries...${C_RESET}"
-  ./install-fabric.sh binary
+  ./instaoll-fabric.sh binary
   echo -e "${C_GREEN}Hyperledger Fabric binaries installed.${C_RESET}"
 
   echo -e "${C_BLUE}Installing Hyperledger Fabric Docker images...${C_RESET}"
@@ -49,5 +49,8 @@ if [ "$1" == "orderer" ] || [ "$1" == "peer" ]; then
   echo -e "${C_BLUE}Adding ${1} compose file to fabric directory...${C_RESET}"
   cp ./compose/compose-${1}.yaml ~/fabric/
 fi
+
+echo -e "${C_BLUE}Adding container control script to fabric directory...${C_RESET}"
+cp ./container.sh ~/fabric/
 
 echo -e "${C_YELLOW}Note that: you may need to log back in to use docker without sudo${C_RESET}"
