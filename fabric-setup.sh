@@ -17,9 +17,9 @@ sudo systemctl start docker
 echo -e "${C_BLUE}Adding Docker to this user group...${C_RESET}"
 sudo usermod -aG docker $USER
 
-echo -e "${C_BLUE}Creating Go project directroy...${C_RESET}"
-mkdir -p $HOME/go/src/github.com/TonyWu3027
-cd $HOME/go/src/github.com/TonyWu3027
+echo -e "${C_BLUE}Creating fabric directroy...${C_RESET}"
+mkdir -p "$HOME"/fabric
+cd "$HOME"/fabric || exit
 
 echo -e "${C_BLUE}Downloading Hyperledger Fabric installation script...${C_RESET}"
 curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh && chmod +x install-fabric.sh
