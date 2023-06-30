@@ -38,4 +38,11 @@ else
   echo -e "${C_GREEN}Hyperledger Fabric Docker images installed.${C_RESET}"
 fi
 
+# Add ~/fabric/bin to PATH if not already added
+if [[ ":$PATH:" != *":$FABRIC_DIR/bin:"* ]]; then
+  echo -e "${C_BLUE}Adding Hyperledger Fabric binaries to PATH...${C_RESET}"
+  echo 'export PATH="$HOME/fabric/bin:$PATH"' >> ~/.bashrc
+  source ~/.bashrc
+fi
+
 echo -e "${C_YELLOW}Note that: you may need to log back in to use docker without sudo${C_RESET}"
