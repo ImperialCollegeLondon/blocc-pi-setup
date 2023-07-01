@@ -102,3 +102,4 @@ echo -e "${C_BLUE}Adding container control script to fabric directory...${C_RESE
 cp ./container.sh ~/fabric/
 
 echo -e "${C_YELLOW}Note that: you may need to log back in to use docker without sudo${C_RESET}"
+echo -e "${C_RED}Note that: you need source ~/.bashrc to activate the settings${C_RESET}"
