@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  default:
+    container_name: peer0.org${FABRIC_PEER_ORG_NUM}.blocc.doc.ic.ac.uk
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/peercfg
+      - FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variables
+      - CORE_PEER_ID=peer0.org${FABRIC_PEER_ORG_NUM}.blocc.doc.ic.ac.uk
+      - CORE_PEER_ADDRESS=peer0.org${FABRIC_PEER_ORG_NUM}.blocc.doc.ic.ac.uk:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org${FABRIC_PEER_ORG_NUM}.blocc.doc.ic.ac.uk:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org${FABRIC_PEER_ORG_NUM}.blocc.doc.ic.ac.uk:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org${FABRIC_PEER_ORG_NUM}.blocc.doc.ic.ac.uk:7051
+      - CORE_PEER_LOCALMSPID=Org${FABRIC_PEER_ORG_NUM}MSP
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
+      - CORE_OPERATIONS_LISTENADDRESS=peer0.org${fabric_peer_org_num}.blocc.doc.ic.ac.uk:9444
+      - CORE_METRICS_PROVIDER=prometheus
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+    volumes:
+      - ~/fabric/config:/etc/hyperledger/fabric/peercfg
+      - ~/fabric/crypto-config/peerOrganizations/org${fabric_peer_org_num}.blocc.doc.ic.ac.uk/peers/peer0.org${fabric_peer_org_num}.blocc.doc.ic.ac.uk:/etc/hyperledger/fabric
+      - ~/fabric/peer0.org${fabric_peer_org_num}.blocc.doc.ic.ac.uk:/var/hyperledger/production
+      - /var/run:/host/var/run
+    working_dir: /root
+    command: peer node start
+    ports:
+      - 7051:7051
+      - 9444:9444
