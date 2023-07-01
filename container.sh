@@ -4,6 +4,14 @@ set -e
 
 source utils.sh
 
+function printHelp() {
+    echo "Brings up/down a peer/orderer docker container"
+    echo
+    echo -e "Usage: $0 ${C_BLUE}<node> <action>${C_RESET}"
+    echo "  ${C_BLUE}<node>${C_RESET}    : 'orderer' or 'peer'"
+    echo "  ${C_BLUE}<action>${C_RESET}  : 'up' or 'down'"
+}
+
 function containerUp() {
     echo -e "${C_BLUE}Bringing up ${NODE}...${C_RESET}"
     docker-compose -f ~/fabric/compose-"${NODE}".yaml up -d
@@ -16,15 +24,36 @@ function containerDown() {
     echo -e "${C_GREEN}${NODE} container is removed${C_RESET}"
 }
 
-if [ "$1" == "orderer" ] || [ "$1" == "peer" ]; then
-    NODE=$1
-    shift
-else
+# Check if help flag is provided
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    printHelp
     exit 0
 fi
 
-if [ "$1" == "up" ]; then
+# Check the number of arguments
+if [ $# -ne 2 ]; then
+    echo -e "${C_RED}Invalid number of arguments!${C_RESET}"
+    printHelp
+    exit 1
+fi
+
+NODE=$1
+ACTION=$2
+
+if [ "$NODE" != "orderer" ] && [ "$NODE" != "peer" ]; then
+    echo "Invalid node: $NODE"
+    printHelp
+    exit 1
+fi
+
+if [ "$ACTION" != "up" ] && [ "$ACTION" != "down" ]; then
+    echo "Invalid action: $ACTION"
+    printHelp
+    exit 1
+fi
+
+if [ "$ACTION" == "up" ]; then
     containerUp
-elif [ "$1" == "down" ]; then
+elif [ "$ACTION" == "down" ]; then
     containerDown
 fi
