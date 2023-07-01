@@ -7,9 +7,9 @@ source utils.sh
 function printHelp() {
     echo "Brings up/down a peer/orderer docker container"
     echo
-    echo -e "Usage: $0 ${C_BLUE}<node> <action>${C_RESET}"
-    echo "  ${C_BLUE}<node>${C_RESET}    : 'orderer' or 'peer'"
-    echo "  ${C_BLUE}<action>${C_RESET}  : 'up' or 'down'"
+    echo -e "Usage: $0 ${C_YELLOW}<node> <action>${C_RESET}"
+    echo -e "  ${C_YELLOW}<node>${C_RESET}    : 'orderer' or 'peer'"
+    echo -e "  ${C_YELLOW}<action>${C_RESET}  : 'up' or 'down'"
 }
 
 function containerUp() {
