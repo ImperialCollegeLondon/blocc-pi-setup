@@ -30,7 +30,7 @@ else
   curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh && chmod +x install-fabric.sh
 
   echo -e "${C_BLUE}Installing Hyperledger Fabric binaries...${C_RESET}"
-  ./instaoll-fabric.sh binary
+  ./install-fabric.sh binary
   echo -e "${C_GREEN}Hyperledger Fabric binaries installed.${C_RESET}"
 
   echo -e "${C_BLUE}Installing Hyperledger Fabric Docker images...${C_RESET}"
