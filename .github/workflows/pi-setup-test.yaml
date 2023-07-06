@@ -16,4 +16,5 @@ jobs:
         run: ./pi-setup.sh
       
       - name: Run pi setup test
+        working-directory: tests
         run: ./tests/pi-setup-test.sh
