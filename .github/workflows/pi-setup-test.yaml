@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  pi-setup-test:
     runs-on: ubuntu-latest
 
     steps:
