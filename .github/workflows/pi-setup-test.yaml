@@ -1,0 +1,19 @@
+name: Raspberry Pi Setup Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Run Pi setup script
+        run: ./pi-setup.sh
+      
+      - name: Run pi setup test
+        run: ./tests/pi-setup-test.sh
