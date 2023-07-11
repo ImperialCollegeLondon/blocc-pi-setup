@@ -3,7 +3,8 @@ OrdererOrgs:
   Domain: blocc.doc.ic.ac.uk
 
   Specs:
-  - Hostname: orderer0
+  # NOTE: temporarily hard-coding blocc-orderer0.local as the only orderer
+  - Hostname: orderer
     SANS:
     - blocc-orderer0.local
 
