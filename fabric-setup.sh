@@ -11,10 +11,10 @@ function printHelp() {
   echo
   echo -e "${C_YELLOW}Options:"
   echo -e "  -h, --help     Display this help message"
-  echo -e "  --org=<org_number>"
-  echo -e "                 Set the FABRIC_PEER_ORG_NUM environment variable for the peer"
+  echo -e "  --container=<container_number>"
+  echo -e "                 Set the FABRIC_CONTAINER_NUM environment variable for the peer"
   echo -e "                 (Only applicable in peer mode)"
-  echo -e "                 Example: $0 peer --org=1${C_RESET}"
+  echo -e "                 Example: $0 peer --container=1${C_RESET}"
 }
 
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
@@ -26,24 +26,24 @@ if [ "$1" == "orderer" ]; then
   echo -e "${C_BLUE}Adding orderer compose file to fabric directory...${C_RESET}"
   cp ./compose/compose-orderer.yaml ~/fabric/
 elif [ "$1" == "peer" ]; then
-  ORG_FLAG="--org"
+  CONTAINER_FLAG="--container"
 
-  function setOrgEnvironmentVariable() {
-    local org_num="$1"
-    if ! grep -q "FABRIC_PEER_ORG_NUM" ~/.bashrc; then
-      echo "export FABRIC_PEER_ORG_NUM=$org_num" >> ~/.bashrc
+  function setContainerEnvironmentVariable() {
+    local container_num="$1"
+    if ! grep -q "FABRIC_CONTAINER_NUM" ~/.bashrc; then
+      echo "export FABRIC_CONTAINER_NUM=$container_num" >> ~/.bashrc
       source ~/.bashrc
-      echo "FABRIC_PEER_ORG_NUM has been set to: $org_num"
+      echo "FABRIC_CONTAINER_NUM has been set to: $container_num"
     else
-      echo "FABRIC_PEER_ORG_NUM is already set in ~/.bashrc."
+      echo "FABRIC_CONTAINER_NUM is already set in ~/.bashrc."
     fi
   }
 
-  if [[ "$2" == "$ORG_FLAG"* ]]; then
-    org_number="${2#*=}"
-    setOrgEnvironmentVariable "$org_number"
+  if [[ "$2" == "$CONTAINER_FLAG"* ]]; then
+    container_number="${2#*=}"
+    setContainerEnvironmentVariable "$container_number"
   else
-    echo -e "${C_RED}Missing org number!${C_RESET}"
+    echo -e "${C_RED}Missing container number!${C_RESET}"
     printHelp
     exit 1
   fi
