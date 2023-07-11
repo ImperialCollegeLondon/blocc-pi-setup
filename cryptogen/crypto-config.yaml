@@ -1,0 +1,19 @@
+OrdererOrgs:
+- Name: Orderer
+  Domain: blocc.doc.ic.ac.uk
+
+  Specs:
+  - Hostname: orderer0
+    SANS:
+    - blocc-orderer0.local
+
+PeerOrgs:
+- Name: Container1
+  Domain: container1.blocc.doc.ic.ac.uk
+  EnableNodeOUs: false
+  Template:
+    Count: 1
+    SANS:
+    - blocc-container1.local
+  Users:
+    Count: 1
