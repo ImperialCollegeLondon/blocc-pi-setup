@@ -34,8 +34,8 @@ services:
     working_dir: /root
     command: orderer
     volumes:
-        - ~/fabric/crypto-config/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/msp:/var/hyperledger/orderer/msp
-        - ~/fabric/crypto-config/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls:/var/hyperledger/orderer/tls
+        - ~/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/msp:/var/hyperledger/orderer/msp
+        - ~/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls:/var/hyperledger/orderer/tls
         - ~/fabric/blocc.doc.ic.ac.uk:/var/hyperledger/production/orderer
     ports:
       - 7050:7050

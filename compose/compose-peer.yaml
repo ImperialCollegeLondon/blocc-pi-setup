@@ -30,7 +30,7 @@ services:
     - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
     volumes:
     - ~/fabric/config:/etc/hyperledger/fabric/peercfg
-    - ~/fabric/crypto-config/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:/etc/hyperledger/fabric
+    - ~/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:/etc/hyperledger/fabric
     - ~/fabric/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:/var/hyperledger/production
     - /var/run:/host/var/run
     working_dir: /root
