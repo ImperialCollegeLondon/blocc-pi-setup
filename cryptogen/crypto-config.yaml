@@ -7,6 +7,8 @@ OrdererOrgs:
   - Hostname: orderer
     SANS:
     - blocc-orderer0.local
+    - blocc-orderer0
+    - localhost
 
 PeerOrgs:
 - Name: Container1
