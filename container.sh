@@ -2,7 +2,11 @@
 
 set -e
 
-source utils.sh
+C_BLUE='\033[0;34m'
+C_RED='\033[0;31m'
+C_YELLOW='\033[1;33m'
+C_GREEN='\033[0;32m'
+C_RESET='\033[0m'
 
 function printHelp() {
     echo "Brings up/down a peer/orderer docker container"
