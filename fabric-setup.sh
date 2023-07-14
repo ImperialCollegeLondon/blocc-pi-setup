@@ -56,7 +56,7 @@ elif [ "$1" == "peer" ]; then
   cp ./fabric/compose/compose-peer.yaml ~/fabric/
 
   echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
-  cp ./fabric/config/core.yaml ~/fabric/config
+  sed "s/\${FABRIC_CONTAINER_NUM}/${container_number}/" ./fabric/config/core.yaml > ~/fabric/config/core.yaml
 
 else
   printHelp
