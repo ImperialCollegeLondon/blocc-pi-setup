@@ -25,6 +25,10 @@ fi
 if [ "$1" == "orderer" ]; then
   echo -e "${C_BLUE}Adding orderer compose file to fabric directory...${C_RESET}"
   cp ./fabric/compose/compose-orderer.yaml ~/fabric/
+
+  echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
+  cp ./fabric/config/orderer.yaml ~/fabric/config
+
 elif [ "$1" == "peer" ]; then
   CONTAINER_FLAG="--container"
 
@@ -36,14 +40,6 @@ elif [ "$1" == "peer" ]; then
       echo "FABRIC_CONTAINER_NUM has been set to: $container_num"
     else
       echo "FABRIC_CONTAINER_NUM is already set in ~/.bashrc."
-    fi
-
-    if ! grep -q "export FABRIC_CFG_PATH=~/fabric/config" ~/.bashrc
-    then
-        echo 'export FABRIC_CFG_PATH=~/fabric/config' >> ~/.bashrc
-        echo 'FABRIC_CFG_PATH added to ~/.bashrc'
-    else
-        echo 'FABRIC_CFG_PATH already exists in ~/.bashrc'
     fi
   }
 
@@ -111,6 +107,15 @@ if [[ ":$PATH:" != *":$FABRIC_DIR/bin:"* ]]; then
   echo -e "${C_BLUE}Adding Hyperledger Fabric binaries to PATH...${C_RESET}"
   echo 'export PATH="$HOME/fabric/bin:$PATH"' >> ~/.bashrc
   source ~/.bashrc
+fi
+
+# Set FABRIC_CFG_PATH if not already set
+if ! grep -q "export FABRIC_CFG_PATH=~/fabric/config" ~/.bashrc
+then
+    echo 'export FABRIC_CFG_PATH=~/fabric/config' >> ~/.bashrc
+    echo 'FABRIC_CFG_PATH added to ~/.bashrc'
+else
+    echo 'FABRIC_CFG_PATH already exists in ~/.bashrc'
 fi
 
 echo -e "${C_BLUE}Adding container control script to fabric directory...${C_RESET}"
