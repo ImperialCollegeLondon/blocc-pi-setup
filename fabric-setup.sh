@@ -24,7 +24,7 @@ fi
 
 if [ "$1" == "orderer" ]; then
   echo -e "${C_BLUE}Adding orderer compose file to fabric directory...${C_RESET}"
-  cp ./compose/compose-orderer.yaml ~/fabric/
+  cp ./fabric/compose/compose-orderer.yaml ~/fabric/
 elif [ "$1" == "peer" ]; then
   CONTAINER_FLAG="--container"
 
@@ -49,7 +49,7 @@ elif [ "$1" == "peer" ]; then
   fi
 
   echo -e "${C_BLUE}Adding peer compose file to fabric directory...${C_RESET}"
-  cp ./compose/compose-peer.yaml ~/fabric/
+  cp ./fabric/compose/compose-peer.yaml ~/fabric/
 else
   printHelp
   exit 1
@@ -89,6 +89,9 @@ else
   echo -e "${C_BLUE}Installing Hyperledger Fabric Docker images...${C_RESET}"
   sudo ./install-fabric.sh docker
   echo -e "${C_GREEN}Hyperledger Fabric Docker images installed.${C_RESET}"
+
+  # Going back to working directory
+  cd "$HOME/blocc-pi-setup" || exit
 fi
 
 # Add ~/fabric/bin to PATH if not already added
@@ -99,13 +102,13 @@ if [[ ":$PATH:" != *":$FABRIC_DIR/bin:"* ]]; then
 fi
 
 echo -e "${C_BLUE}Adding container control script to fabric directory...${C_RESET}"
-cp ./container.sh ~/fabric/
+cp ./fabric/container.sh ~/fabric/
 
 echo -e "${C_BLUE}Adding crytogen config to fabric directory...${C_RESET}"
-cp ./cryptogen/crypto-config.yaml ~/fabric/
+cp ./fabric/config/crypto-config.yaml ~/fabric
 
 echo -e "${C_BLUE}Adding configtx.yaml to fabric directory...${C_RESET}"
-cp ./configtx/configtx.yaml ~/fabric/config
+cp ./fabric/config/configtx.yaml ~/fabric/config
 
 echo -e "${C_YELLOW}Note that: you may need to log back in to use docker without sudo${C_RESET}"
 echo -e "${C_RED}Note that: you need source ~/.bashrc to activate the settings${C_RESET}"

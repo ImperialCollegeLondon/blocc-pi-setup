@@ -18,5 +18,7 @@ PeerOrgs:
     Count: 1
     SANS:
     - blocc-container1.local
+    - blocc-container1
+    - localhost
   Users:
     Count: 1
