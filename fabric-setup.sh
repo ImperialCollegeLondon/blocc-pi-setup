@@ -37,6 +37,14 @@ elif [ "$1" == "peer" ]; then
     else
       echo "FABRIC_CONTAINER_NUM is already set in ~/.bashrc."
     fi
+
+    if ! grep -q "export FABRIC_CFG_PATH=~/fabric/config" ~/.bashrc
+    then
+        echo 'export FABRIC_CFG_PATH=~/fabric/config' >> ~/.bashrc
+        echo 'FABRIC_CFG_PATH added to ~/.bashrc'
+    else
+        echo 'FABRIC_CFG_PATH already exists in ~/.bashrc'
+    fi
   }
 
   if [[ "$2" == "$CONTAINER_FLAG"* ]]; then
@@ -50,6 +58,10 @@ elif [ "$1" == "peer" ]; then
 
   echo -e "${C_BLUE}Adding peer compose file to fabric directory...${C_RESET}"
   cp ./fabric/compose/compose-peer.yaml ~/fabric/
+
+  echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
+  cp ./fabric/config/core.yaml ~/fabric/config
+
 else
   printHelp
   exit 1

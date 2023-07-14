@@ -6,13 +6,14 @@ services:
     labels:
       service: hyperledger-fabric
     environment:
-    - FABRIC_CFG_PATH=/etc/hyperledger/fabric/peercfg
+    - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
     - FABRIC_LOGGING_SPEC=DEBUG
+    # NOTE: server and client share the same cert and key
     - CORE_PEER_TLS_ENABLED=true
-    - CORE_PEER_PROFILE_ENABLED=false
     - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
     - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
     - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    - CORE_PEER_PROFILE_ENABLED=false
     # Peer specific variables
     - CORE_PEER_ID=peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk
     - CORE_PEER_ADDRESS=peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:7051
@@ -21,7 +22,7 @@ services:
     - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
     - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:7051
     - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:7051
-    - CORE_PEER_LOCALMSPID=container${FABRIC_CONTAINER_NUM}MSP
+    - CORE_PEER_LOCALMSPID=Container${FABRIC_CONTAINER_NUM}MSP
     - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
     - CORE_OPERATIONS_LISTENADDRESS=peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:9444
     - CORE_METRICS_PROVIDER=prometheus
@@ -29,7 +30,7 @@ services:
     #Generic peer variables
     - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
     volumes:
-    - ~/fabric/config:/etc/hyperledger/fabric/peercfg
+    - ~/fabric/config:/etc/hyperledger/peercfg
     - ~/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:/etc/hyperledger/fabric
     - ~/fabric/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk:/var/hyperledger/production
     - /var/run:/host/var/run
