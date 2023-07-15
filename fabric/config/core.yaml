@@ -280,16 +280,16 @@ peer:
         clientAuthRequired: false
         # X.509 certificate used for TLS server
         cert:
-            file: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container1.blocc.doc.ic.ac.uk/tls/server.crt
+            file: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/server.crt
         # Private key used for TLS server
         key:
-            file: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container1.blocc.doc.ic.ac.uk/tls/server.key
+            file: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/server.key
         # rootcert.file represents the trusted root certificate chain used for verifying certificates
         # of other nodes during outbound connections.
         # It is not required to be set, but can be used to augment the set of TLS CA certificates
         # available from the MSPs of each channel’s configuration.
         rootcert:
-            file: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container1.blocc.doc.ic.ac.uk/tls/ca.crt
+            file: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/ca.crt
         # If mutual TLS is enabled, clientRootCAs.files contains a list of additional root certificates
         # used for verifying certificates of client connections.
         # NOTE: not set since mutual TLS is not enabled
@@ -352,7 +352,7 @@ peer:
 
     # Path on the file system where peer will find MSP local configurations
     # The path may be relative to FABRIC_CFG_PATH or an absolute path.
-    mspConfigPath: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container1.blocc.doc.ic.ac.uk/msp
+    mspConfigPath: /home/pi/fabric/organizations/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/msp
 
     # Identifier of the local MSP
     # ----!!!!IMPORTANT!!!-!!!IMPORTANT!!!-!!!IMPORTANT!!!!----
