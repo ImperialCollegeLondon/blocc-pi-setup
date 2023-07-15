@@ -3,7 +3,7 @@ Organizations:
 
   Name: OrdererMSP
   ID: OrdererMSP
-  MSPDir: ../organizations/ordererOrganizations/blocc.doc.ic.ac.uk/msp
+  MSPDir: ~/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/msp
   Policies:
     Readers:
       Type: Signature
@@ -20,7 +20,7 @@ Organizations:
 - &Container1
   Name: Container1MSP
   ID: Container1MSP
-  MSPDir: ../organizations/peerOrganizations/container1.blocc.doc.ic.ac.uk/msp
+  MSPDir: ~/fabric/organizations/peerOrganizations/container1.blocc.doc.ic.ac.uk/msp
   Policies:
     Readers:
       Type: Signature
@@ -78,8 +78,8 @@ Orderer: &OrdererDefaults
     - Host: blocc-orderer0
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
-      ClientTLSCert: ../organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
-      ServerTLSCert: ../organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
+      ClientTLSCert: ~/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ~/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
 
   BatchTimeout: 2s
 
