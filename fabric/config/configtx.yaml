@@ -34,6 +34,24 @@ Organizations:
     Endorsement:
       Type: Signature
       Rule: "OR('Container1MSP.peer')"
+  
+- &Container2
+  Name: Container2MSP
+  ID: Container2MSP
+  MSPDir: ../organizations/peerOrganizations/container2.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container2MSP.admin', 'Container2MSP.peer', 'Container2MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container2MSP.admin', 'Container2MSP.client')"
+    Admins:
+      Type: Signature
+      Rule: "OR('Container2MSP.admin')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container2MSP.peer')"
 
 Capabilities:
   Channel: &ChannelCapabilities
@@ -125,7 +143,7 @@ Channel: &ChannelDefaults
 
 Profiles:
 
-  OneContainerApplicationGenesis:
+  BloccApplicationGenesis:
     <<: *ChannelDefaults
     Orderer:
       <<: *OrdererDefaults
@@ -136,4 +154,5 @@ Profiles:
       <<: *ApplicationDefaults
       Organizations:
       - *Container1
+      - *Container2
       Capabilities: *ApplicationCapabilities

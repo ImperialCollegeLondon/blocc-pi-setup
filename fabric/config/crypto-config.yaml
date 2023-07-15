@@ -24,3 +24,15 @@ PeerOrgs:
     - 127.0.0.1
   Users:
     Count: 1
+- Name: Container2
+  Domain: container2.blocc.doc.ic.ac.uk
+  EnableNodeOUs: true
+  Template:
+    Count: 1
+    SANS:
+    - blocc-container2.local
+    - blocc-container2
+    - localhost
+    - 127.0.0.1
+  Users:
+    Count: 1
