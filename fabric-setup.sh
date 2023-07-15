@@ -98,6 +98,9 @@ else
   sudo ./install-fabric.sh docker
   echo -e "${C_GREEN}Hyperledger Fabric Docker images installed.${C_RESET}"
 
+  echo -e "${C_BLUE}Creating channel-artefacts directory...${C_RESET}"
+  mkdir -p channel-artefacts
+
   # Going back to working directory
   cd "$HOME/blocc-pi-setup" || exit
 fi
