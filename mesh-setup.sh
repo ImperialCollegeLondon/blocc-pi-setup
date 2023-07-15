@@ -31,7 +31,9 @@ while getopts ":rh" opt; do
 done
 
 echo -e "${C_BLUE}Loading batman-adv at boot time...${C_RESET}"
-echo 'batman-adv' | sudo tee --append /etc/modules
+if ! grep -qxF 'batman-adv' /etc/modules; then
+    echo 'batman-adv' | sudo tee --append /etc/modules
+fi
 
 install_package batctl
 
@@ -44,7 +46,9 @@ echo -e "${C_BLUE}Copying the wlan0 interface definition...${C_RESET}"
 sudo cp ./wlan0 /etc/network/interfaces.d
 
 echo -e "${C_BLUE}Disabling DHCP client from managing wlan0...${C_RESET}"
-echo 'denyinterfaces wlan0' | sudo tee --append /etc/dhcpcd.conf
+if ! grep -qxF 'denyinterfaces wlan0' /etc/dhcpcd.conf; then
+    echo 'denyinterfaces wlan0' | sudo tee --append /etc/dhcpcd.conf
+fi
 
 echo -e "${C_BLUE}Running start-batman-adv.sh at boot time...${C_RESET}"
 start_script="/home/pi/mesh/start-batman-adv.sh"
