@@ -4,7 +4,31 @@ set -e
 
 source utils.sh
 
-echo -e "${C_BLUE}Starting setup...${C_RESET}"
+printHelp() {
+    echo -e "Usage: $0 ${C_BLUE}[-r] [-h]${C_RESET}"
+    echo "Options:"
+    echo -e "   ${C_BLUE}-r${C_RESET}    Reboot after the script completes"
+    echo -e "   ${C_BLUE}-h${C_RESET}    Display this help message"
+}
+
+REBOOT_FLAG=0
+
+while getopts ":rh" opt; do
+    case $opt in
+        r)
+            REBOOT_FLAG=1
+            ;;
+        h)
+            printHelp
+            exit 0
+            ;;
+        \?)
+            echo -e "${C_RED}Invalid option: -$OPTARG${C_RESET}" >&2
+            printHelp
+            exit 1
+            ;;
+    esac
+done
 
 echo -e "${C_BLUE}Loading batman-adv at boot time...${C_RESET}"
 echo 'batman-adv' | sudo tee --append /etc/modules
@@ -37,5 +61,9 @@ fi
 echo -e "${C_BLUE}Copying the bat-hosts...${C_RESET}"
 sudo cp ./bat-hosts /etc
 
-echo -e "${C_YELLOW}Rebooting now...${C_RESET}"
-sudo reboot
+if [[ "$REBOOT_FLAG" -eq 1 ]]; then
+    echo -e "${C_GREEN}Rebooting now...${C_RESET}"
+    sudo reboot
+else
+    echo -e "${C_YELLOW}Skipping reboot...${C_RESET}"
+fi
