@@ -9,16 +9,18 @@ OrdererOrgs:
     - blocc-orderer0.local
     - blocc-orderer0
     - localhost
+    - 127.0.0.1
 
 PeerOrgs:
 - Name: Container1
   Domain: container1.blocc.doc.ic.ac.uk
-  EnableNodeOUs: false
+  EnableNodeOUs: true
   Template:
     Count: 1
     SANS:
     - blocc-container1.local
     - blocc-container1
     - localhost
+    - 127.0.0.1
   Users:
     Count: 1
