@@ -40,10 +40,10 @@ install_package batctl
 echo -e "${C_BLUE}Copying the start script...${C_RESET}"
 
 mkdir -p ~/mesh
-cp ./start-batman-adv.sh ~/mesh
+cp ./mesh/start-batman-adv.sh ~/mesh
 
 echo -e "${C_BLUE}Copying the wlan0 interface definition...${C_RESET}"
-sudo cp ./wlan0 /etc/network/interfaces.d
+sudo cp ./mesh/wlan0 /etc/network/interfaces.d
 
 echo -e "${C_BLUE}Disabling DHCP client from managing wlan0...${C_RESET}"
 if ! grep -qxF 'denyinterfaces wlan0' /etc/dhcpcd.conf; then
@@ -63,7 +63,7 @@ then
 fi
 
 echo -e "${C_BLUE}Copying the bat-hosts...${C_RESET}"
-sudo cp ./bat-hosts /etc
+sudo cp ./mesh/bat-hosts /etc
 
 if [[ "$REBOOT_FLAG" -eq 1 ]]; then
     echo -e "${C_GREEN}Rebooting now...${C_RESET}"
