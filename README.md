@@ -7,9 +7,7 @@ This repository contains the setup scripts to prepare a Raspberry Pi 4B to be us
 - [`fabric-setup.sh`](./fabric-setup.sh): the script to install Hyperledger Fabric (HLF) on the Pi
 - [`mesh-setup.sh`](./mesh-setup.sh): the script to setup the Pi to join a Mesh network called `blocc-mesh`
 - [`pi-setup.sh`](./pi-setup.sh): the script to install miscellaneous packages required on the Pi
-- [`update-bat-hosts.sh`](./update-bat-hosts.sh): `bat-hosts` is a mapping from the MAC addresses of the `wlan0` interfaces on the Pis to an identifiable name (e.g. hostname). This script replaces the `bat-hosts` file on the Pi (situated in `/etc/`) with that in this repository
-- [`container.sh`](./container.sh): the script that brings up/down the corresponding HLF peer/orderer container.
 
 ## Docker Compose files
 
-[`compose/`](./compose/) directory consists of 2 docker-compose for composing a peer and an orderer container. This is to be used with [`container.sh`](./container.sh) to bring up/down the containers.
+[`fabric/compose/`](./fabric/compose/) directory consists of 2 docker-compose for composing a peer and an orderer container. This is to be used with [`fabric/container.sh`](./fabric/container.sh) to bring up/down the containers.
