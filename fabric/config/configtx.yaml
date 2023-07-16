@@ -30,7 +30,8 @@ Organizations:
       Rule: "OR('Container1MSP.admin', 'Container1MSP.client')"
     Admins:
       Type: Signature
-      Rule: "OR('Container1MSP.admin')"
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container1MSP.admin'), 'Container1MSP.peer')"
     Endorsement:
       Type: Signature
       Rule: "OR('Container1MSP.peer')"
@@ -48,7 +49,7 @@ Organizations:
       Rule: "OR('Container2MSP.admin', 'Container2MSP.client')"
     Admins:
       Type: Signature
-      Rule: "OR('Container2MSP.admin')"
+      Rule: "OR('Container2MSP.admin'), 'Container2MSP.peer')"
     Endorsement:
       Type: Signature
       Rule: "OR('Container2MSP.peer')"
