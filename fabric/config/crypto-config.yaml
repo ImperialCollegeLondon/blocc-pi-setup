@@ -1,38 +1,49 @@
 OrdererOrgs:
-- Name: Orderer
-  Domain: blocc.doc.ic.ac.uk
+  - Name: ContainerOrderer5
+    Domain: container5.blocc.doc.ic.ac.uk
 
-  Specs:
-  # NOTE: temporarily hard-coding blocc-orderer0.local as the only orderer
-  - Hostname: orderer
-    SANS:
-    - blocc-orderer0.local
-    - blocc-orderer0
-    - localhost
-    - 127.0.0.1
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container5.local
+          - blocc-container5
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer6
+    Domain: container6.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container6.local
+          - blocc-container6
+          - localhost
+          - 127.0.0.1
 
 PeerOrgs:
-- Name: Container1
-  Domain: container1.blocc.doc.ic.ac.uk
-  EnableNodeOUs: true
-  Template:
-    Count: 1
-    SANS:
-    - blocc-container1.local
-    - blocc-container1
-    - localhost
-    - 127.0.0.1
-  Users:
-    Count: 1
-- Name: Container2
-  Domain: container2.blocc.doc.ic.ac.uk
-  EnableNodeOUs: true
-  Template:
-    Count: 1
-    SANS:
-    - blocc-container2.local
-    - blocc-container2
-    - localhost
-    - 127.0.0.1
-  Users:
-    Count: 1
+  - Name: Container5
+    Domain: container5.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container5.local
+        - blocc-container5
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container6
+    Domain: container6.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container6.local
+        - blocc-container6
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
