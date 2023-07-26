@@ -160,7 +160,7 @@ Channel: &Channel5
       Type: ImplicitMeta
       Rule: "MAJORITY Admins"
     ChannelLeader:
-      Type: ImplicitMeta
+      Type: Signature
       Rule: "OR('Container5MSP.member')"
     SensorySigners:
       Type: ImplicitMeta
