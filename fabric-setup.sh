@@ -53,15 +53,6 @@ else
   exit 1
 fi
 
-echo -e "${C_BLUE}Adding compose file to fabric directory...${C_RESET}"
-cp ./fabric/compose/compose.yaml ~/fabric/
-
-echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
-sed "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" ./fabric/config/core.yaml > ~/fabric/config/core.yaml
-
-echo -e "${C_BLUE}Adding orderer.yaml to fabric directory...${C_RESET}"
-sed "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" ./fabric/config/orderer.yaml > ~/fabric/config/orderer.yaml
-
 echo -e "${C_BLUE}Installing Docker...${C_RESET}"
 
 install_package docker-compose
@@ -96,6 +87,15 @@ else
   # Going back to working directory
   cd "$HOME/blocc-pi-setup" || exit
 fi
+
+echo -e "${C_BLUE}Adding compose file to fabric directory...${C_RESET}"
+cp ./fabric/compose/compose.yaml ~/fabric/
+
+echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
+sed "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" ./fabric/config/core.yaml > ~/fabric/config/core.yaml
+
+echo -e "${C_BLUE}Adding orderer.yaml to fabric directory...${C_RESET}"
+sed "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" ./fabric/config/orderer.yaml > ~/fabric/config/orderer.yaml
 
 # Add ~/fabric/bin to PATH if not already added
 if [[ ":$PATH:" != *":$FABRIC_DIR/bin:"* ]]; then
