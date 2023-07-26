@@ -1,5 +1,5 @@
 Organizations:
-- &ContainerOrderer5
+- &ContainerOrdererOrg5
 
   Name: ContainerOrderer5MSP
   ID: ContainerOrderer5MSP
@@ -17,7 +17,7 @@ Organizations:
   OrdererEndpoints:
   - blocc-container5:7050
 
-- &ContainerOrderer6
+- &ContainerOrdererOrg6
 
   Name: ContainerOrderer6MSP
   ID: ContainerOrderer6MSP
@@ -35,7 +35,7 @@ Organizations:
   OrdererEndpoints:
   - blocc-container6:7050
 
-- &Container5
+- &ContainerOrg5
   Name: Container5MSP
   ID: Container5MSP
   MSPDir: ../organizations/peerOrganizations/container5.blocc.doc.ic.ac.uk/msp
@@ -54,7 +54,7 @@ Organizations:
       Type: Signature
       Rule: "OR('Container5MSP.peer')"
   
-- &Container6
+- &ContainerOrg6
   Name: Container6MSP
   ID: Container6MSP
   MSPDir: ../organizations/peerOrganizations/Container6.blocc.doc.ic.ac.uk/msp
@@ -106,17 +106,17 @@ Application: &ApplicationDefaults
   Capabilities:
     <<: *ApplicationCapabilities
 
-Orderer: &OrdererDefaults
+Orderer: &ContainerOrderer5
 
   OrdererType: etcdraft
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-orderer0
+    - Host: blocc-container5
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
-      ClientTLSCert: ../organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
-      ServerTLSCert: ../organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
+      ClientTLSCert: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt
 
   BatchTimeout: 2s
 
@@ -174,13 +174,13 @@ Profiles:
   Channel5Genesis:
     <<: *Channel5
     Orderer:
-      <<: *OrdererDefaults
+      <<: *ContainerOrderer5
       Organizations:
-      - *ContainerOrderer5
+      - *ContainerOrdererOrg5
       Capabilities: *OrdererCapabilities
     Application:
       <<: *ApplicationDefaults
       Organizations:
-      - *Container5
-      - *Container6
+      - *ContainerOrg5
+      - *ContainerOrg6
       Capabilities: *ApplicationCapabilities
