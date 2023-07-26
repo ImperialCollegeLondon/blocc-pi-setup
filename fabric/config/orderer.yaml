@@ -23,15 +23,15 @@ General:
         # Require server-side TLS
         Enabled: true
         # PrivateKey governs the file location of the private key of the TLS certificate.
-        PrivateKey: /home/pi/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.key
+        PrivateKey: /home/pi/fabric/organizations/ordererOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/server.key
         # Certificate governs the file location of the server TLS certificate.
-        Certificate: /home/pi/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
+        Certificate: /home/pi/fabric/organizations/ordererOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/server.crt
         # RootCAs contains a list of additional root certificates used for verifying certificates
         # of other orderer nodes during outbound connections.
         # It is not required to be set, but can be used to augment the set of TLS CA certificates
         # available from the MSPs of each channel’s configuration.
         RootCAs:
-          - /home/pi/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/ca.crt
+          - /home/pi/fabric/organizations/ordererOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/ca.crt
         # Require client certificates / mutual TLS for inbound connections.
         ClientAuthRequired: false
         # If mutual TLS is enabled, ClientRootCAs contains a list of additional root certificates
@@ -108,14 +108,14 @@ General:
     # LocalMSPDir is where to find the private crypto material needed by the
     # orderer. It is set relative here as a default for dev environments but
     # should be changed to the real location in production.
-    LocalMSPDir: /home/pi/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/msp
+    LocalMSPDir: /home/pi/fabric/organizations/ordererOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/msp
 
     # LocalMSPID is the identity to register the local MSP material with the MSP
     # manager. IMPORTANT: The local MSP ID of an orderer needs to match the MSP
     # ID of one of the organizations defined in the orderer system channel's
     # /Channel/Orderer configuration. The sample organization defined in the
     # sample configuration provided has an MSP ID of "SampleOrg".
-    LocalMSPID: OrdererMSP
+    LocalMSPID: ContainerOrderer${FABRIC_CONTAINER_NUM}MSP
 
     # Enable an HTTP service for Go "pprof" profiling as documented at:
     # https://golang.org/pkg/net/http/pprof
@@ -309,7 +309,7 @@ Debug:
 ################################################################################
 Operations:
     # host and port for the operations server
-    ListenAddress: orderer.blocc.doc.ic.ac.uk:9443
+    ListenAddress: 0.0.0.0:9443
 
     # TLS configuration for the operations endpoint
     TLS:
@@ -373,10 +373,10 @@ Admin:
         Enabled: true
 
         # Certificate is the location of the PEM encoded TLS certificate
-        Certificate: /home/pi/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.crt
+        Certificate: /home/pi/fabric/organizations/ordererOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/server.crt
 
         # PrivateKey points to the location of the PEM-encoded key
-        PrivateKey: /home/pi/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/server.key
+        PrivateKey: /home/pi/fabric/organizations/ordererOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/server.key
 
         # Most admin service endpoints require client authentication when TLS
         # is enabled. ClientAuthRequired requires client certificate authentication
@@ -388,7 +388,7 @@ Admin:
 
         # Paths to PEM encoded ca certificates to trust for client authentication
         ClientRootCAs:
-          - /home/pi/fabric/organizations/ordererOrganizations/blocc.doc.ic.ac.uk/orderers/orderer.blocc.doc.ic.ac.uk/tls/ca.crt
+          - /home/pi/fabric/organizations/ordererOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/ca.crt
 
 ################################################################################
 #
