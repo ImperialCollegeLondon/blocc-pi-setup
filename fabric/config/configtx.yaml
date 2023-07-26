@@ -57,7 +57,7 @@ Organizations:
 - &ContainerOrg6
   Name: Container6MSP
   ID: Container6MSP
-  MSPDir: ../organizations/peerOrganizations/Container6.blocc.doc.ic.ac.uk/msp
+  MSPDir: ../organizations/peerOrganizations/container6.blocc.doc.ic.ac.uk/msp
   Policies:
     Readers:
       Type: Signature
