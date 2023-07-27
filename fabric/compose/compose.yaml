@@ -7,6 +7,9 @@ services:
     environment:
     - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
     - FABRIC_LOGGING_SPEC=DEBUG
+    # NOTE: for BLOCC protocol
+    - CORE_PEER_ADDRESS=blocc-container${FABRIC_CONTAINER_NUM}:7051
+    - CORE_PEER_LOCALMSPID=Container${FABRIC_CONTAINER_NUM}MSP
     # NOTE: server and client share the same cert and key
     - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
     - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
