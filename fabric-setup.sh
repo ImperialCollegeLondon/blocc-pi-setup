@@ -30,7 +30,7 @@ function setContainerEnvironmentVariable() {
 pullBinaries() {
     echo -e "${C_BLUE} Downloading fabric binaries${C_RESET}"
     BINARY_FILE="hyperledger-fabric-linux-arm64-2.5.1.tar.gz"
-    URL="https://github.com/TonyWu3027/blocc-fabric/releases/download/latest/${BINARY_FILE}"
+    URL="https://github.com/ImperialCollegeLondon/blocc-fabric/releases/download/latest/${BINARY_FILE}"
     DEST_DIR=/home/pi/fabric
     echo -e "${C_BLUE}===> Downloading: ${URL}${C_RESET}"
     echo -e "${C_BLUE}===> Will unpack to: ${DEST_DIR}${C_RESET}"

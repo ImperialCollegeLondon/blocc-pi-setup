@@ -2,7 +2,7 @@ version: '3.7'
 services:
   peer:
     container_name: peer
-    image: ghcr.io/tonywu3027/fabric-peer:bloccprotocol-release
+    image: ghcr.io/imperialcollegelondon/fabric-peer:bloccprotocol-release
     network_mode: host
     environment:
     - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
@@ -31,7 +31,7 @@ services:
 
   orderer:
     container_name: orderer
-    image: ghcr.io/tonywu3027/fabric-orderer:bloccprotocol-release
+    image: ghcr.io/imperialcollegelondon/fabric-orderer:bloccprotocol-release
     environment:
       - FABRIC_CFG_PATH=/var/hyperledger/config
       - FABRIC_LOGGING_SPEC=DEBUG
