@@ -6,6 +6,7 @@ OrdererOrgs:
       - Hostname: orderer
         SANS:
           - blocc-container5.local
+          - blocc-container5-orderer
           - blocc-container5
           - localhost
           - 127.0.0.1
@@ -18,6 +19,7 @@ OrdererOrgs:
         SANS:
           - blocc-container6.local
           - blocc-container6
+          - blocc-container6-orderer
           - localhost
           - 127.0.0.1
 
