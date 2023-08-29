@@ -1,4 +1,52 @@
 OrdererOrgs:
+  - Name: ContainerOrderer1
+    Domain: container1.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container1.local
+          - blocc-container1-orderer
+          - blocc-container1
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer2
+    Domain: container2.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container2.local
+          - blocc-container2-orderer
+          - blocc-container2
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer3
+    Domain: container3.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container3.local
+          - blocc-container3-orderer
+          - blocc-container3
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer4
+    Domain: container4.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container4.local
+          - blocc-container4-orderer
+          - blocc-container4
+          - localhost
+          - 127.0.0.1
+  
   - Name: ContainerOrderer5
     Domain: container5.blocc.doc.ic.ac.uk
 
@@ -23,7 +71,131 @@ OrdererOrgs:
           - localhost
           - 127.0.0.1
 
+  - Name: ContainerOrderer7
+    Domain: container7.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container7.local
+          - blocc-container7
+          - blocc-container7-orderer
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer8
+    Domain: container8.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container8.local
+          - blocc-container8
+          - blocc-container8-orderer
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer9
+    Domain: container9.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container9.local
+          - blocc-container9
+          - blocc-container9-orderer
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer10
+    Domain: container10.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container10.local
+          - blocc-container10
+          - blocc-container10-orderer
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer11
+    Domain: container11.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container11.local
+          - blocc-container11
+          - blocc-container11-orderer
+          - localhost
+          - 127.0.0.1
+
+  - Name: ContainerOrderer12
+    Domain: container12.blocc.doc.ic.ac.uk
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - blocc-container12.local
+          - blocc-container12
+          - blocc-container12-orderer
+          - localhost
+          - 127.0.0.1
+
 PeerOrgs:
+  - Name: Container1
+    Domain: container1.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container1.local
+        - blocc-container1
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container2
+    Domain: container2.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container2.local
+        - blocc-container2
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container3
+    Domain: container3.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container3.local
+        - blocc-container3
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container4
+    Domain: container4.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container4.local
+        - blocc-container4
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
   - Name: Container5
     Domain: container5.blocc.doc.ic.ac.uk
     EnableNodeOUs: true
@@ -45,6 +217,84 @@ PeerOrgs:
       SANS:
         - blocc-container6.local
         - blocc-container6
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container7
+    Domain: container7.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container7.local
+        - blocc-container7
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container8
+    Domain: container8.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container8.local
+        - blocc-container8
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container9
+    Domain: container9.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container9.local
+        - blocc-container9
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container10
+    Domain: container10.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container10.local
+        - blocc-container10
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container11
+    Domain: container11.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container11.local
+        - blocc-container11
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: Container12
+    Domain: container12.blocc.doc.ic.ac.uk
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - blocc-container12.local
+        - blocc-container12
         - localhost
         - 127.0.0.1
     Users:
