@@ -10,7 +10,7 @@ CHANNEL_NUMBER=$1
 export OSN_TLS_CA_ROOT_CERT=/home/pi/fabric/organizations/ordererOrganizations/container${CHANNEL_NUMBER}.blocc.doc.ic.ac.uk/tlsca/tlsca.container${CHANNEL_NUMBER}.blocc.doc.ic.ac.uk-cert.pem
 
 # Fetch genesis block
-peer channel fetch config ~/fabric/channel-artefacts/channel"${CHANNEL_NUMBER}"-genesis.block \
+peer channel fetch 0 ~/fabric/channel-artefacts/channel"${CHANNEL_NUMBER}"-genesis.block \
 -c channel"${CHANNEL_NUMBER}" \
 -o blocc-container"${CHANNEL_NUMBER}":7050 \
 --tls --cafile "$OSN_TLS_CA_ROOT_CERT"
