@@ -8,10 +8,10 @@ volumes:
 
 services:
 
-  explorerdb.mynetwork.com:
+  explorerdb:
     image: ghcr.io/imperialcollegelondon/blocc-explorer-db:main
     network_mode: host
-    container_name: explorerdb.mynetwork.com
+    container_name: explorerdb
     hostname: localhost
     environment:
       - DATABASE_DATABASE=fabricexplorer
@@ -28,9 +28,9 @@ services:
       - /home/pi/fabric/organizations:/tmp/crypto
       - walletstore:/opt/explorer/wallet
 
-  explorer.mynetwork.com:
+  explorer:
     image: ghcr.io/imperialcollegelondon/blocc-explorer:main
-    container_name: explorer.mynetwork.com
+    container_name: explorer
     hostname: localhost
     network_mode: host
     environment:
@@ -52,5 +52,5 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      explorerdb.mynetwork.com:
+      explorerdb:
         condition: service_healthy
