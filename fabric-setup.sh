@@ -131,6 +131,7 @@ cp -r ./fabric/explorer ./explorer_tmp
 # Replace the placeholder with the actual value in the copy of network.json
 sed -i "s/\${FABRIC_CONTAINER_NUM}/${FABRIC_CONTAINER_NUM}/g" ./explorer_tmp/connection-profile/network.json
 # Now copy the temporary explorer directory to the desired location
+mkdir -p ~/fabric/explorer
 cp -r ./explorer_tmp/* ~/fabric/explorer/
 # Remove the temporary directory
 rm -rf ./explorer_tmp
