@@ -122,5 +122,8 @@ cp ./fabric/config/crypto-config.yaml ~/fabric
 echo -e "${C_BLUE}Adding configtx.yaml to fabric directory...${C_RESET}"
 cp ./fabric/config/configtx.yaml ~/fabric/config
 
+echo -e "${C_BLUE}Adding fabric scripts to fabric directory...${C_RESET}"
+cp -r ./fabric/script ~/fabric
+
 echo -e "${C_YELLOW}Note that: you may need to log back in to use docker without sudo${C_RESET}"
 echo -e "${C_RED}Note that: you need source ~/.bashrc to activate the settings${C_RESET}"
