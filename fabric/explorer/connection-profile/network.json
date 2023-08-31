@@ -1,0 +1,48 @@
+{
+	"name": "container-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin",
+			"password": "exploreradminpw"
+		},
+		"enableAuthentication": false,
+		"organization": "Container${FABRIC_CONTAINER_NUM}MSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"channel1": {
+			"peers": {
+				"peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk": {}
+			}
+		}
+	},
+	"organizations": {
+		"Container${FABRIC_CONTAINER_NUM}MSP": {
+			"mspid": "Container${FABRIC_CONTAINER_NUM}MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/users/Admin@container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/msp/keystore/priv_sk"
+			},
+			"peers": ["peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/users/Admin@container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/msp/signcerts/Admin@container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk-cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/peers/peer0.container${FABRIC_CONTAINER_NUM}.blocc.doc.ic.ac.uk/tls/ca.crt"
+			},
+			"url": "grpcs://blocc-container${FABRIC_CONTAINER_NUM}:7051"
+		}
+	}
+}

@@ -125,5 +125,15 @@ cp ./fabric/config/configtx.yaml ~/fabric/config
 echo -e "${C_BLUE}Adding fabric scripts to fabric directory...${C_RESET}"
 cp -r ./fabric/scripts ~/fabric
 
+echo -e "${C_BLUE}Adding explorer docker-compose YAML to fabric directory...${C_RESET}"
+# Create a temporary copy of the explorer directory
+cp -r ./fabric/explorer ./explorer_tmp
+# Replace the placeholder with the actual value in the copy of network.json
+sed -i "s/\${FABRIC_CONTAINER_NUM}/${FABRIC_CONTAINER_NUM}/g" ./explorer_tmp/connection-profile/network.json
+# Now copy the temporary explorer directory to the desired location
+cp -r ./explorer_tmp/* ~/fabric/explorer/
+# Remove the temporary directory
+rm -rf ./explorer_tmp
+
 echo -e "${C_YELLOW}Note that: you may need to log back in to use docker without sudo${C_RESET}"
 echo -e "${C_RED}Note that: you need source ~/.bashrc to activate the settings${C_RESET}"
