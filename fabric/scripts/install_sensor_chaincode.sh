@@ -13,8 +13,10 @@ OSN_TLS_CA_ROOT_CERT=/home/pi/fabric/organizations/ordererOrganizations/containe
 
 cd ~/fabric || exit
 
-# Download packaged chaincode to ~/fabric
-wget https://github.com/ImperialCollegeLondon/blocc-temp-humidity-chaincode/releases/download/blocc-test/sensor_chaincode.tar.gz
+# Check if sensor_chaincode.tar.gz already exists, if not, download it
+if [ ! -f ./sensor_chaincode.tar.gz ]; then
+    wget https://github.com/ImperialCollegeLondon/blocc-temp-humidity-chaincode/releases/download/blocc-test/sensor_chaincode.tar.gz
+fi
 
 # Install chaincode
 peer lifecycle chaincode install ./sensor_chaincode.tar.gz
