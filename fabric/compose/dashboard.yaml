@@ -1,0 +1,62 @@
+version: '2.1'
+
+services:
+  frontend:
+    container_name: blocc-dashboard-frontend
+    restart: always
+    network_mode: host
+    hostname: dashboard.blocc.doc.ic.ac.uk
+    image: ghcr.io/imperialcollegelondon/blocc-dashboard-frontend:master
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_ENDPOINT=http://backend.dashboard.blocc.doc.ic.ac.uk:8080
+      - REACT_APP_POLL_INTERVAL=2000
+    ports:
+      - 8888:3000
+    networks:
+      - test
+    healthcheck:
+      test: curl --fail http://localhost:3000 || exit 1
+      interval: 20s
+      timeout: 10s
+      retries: 7
+    command: /bin/sh -c "yarn start"
+  backend:
+    container_name: blocc-dashboard-backend
+    restart: always
+    network_mode: host
+    hostname: backend.dashboard.blocc.doc.ic.ac.uk
+    image: ghcr.io/imperialcollegelondon/blocc-dashboard-backend:master
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db.dashboard.blocc.doc.ic.ac.uk:5432/blocc-dashboard-backend
+      - SPRING_DATASOURCE_USERNAME=blocc-dashboard-backend
+      - SPRING_DATASOURCE_PASSWORD=blocc-dashboard-backend-db
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_JPA_SHOW_SQL=false
+      - SERVER_PORT=8080
+      - FABRIC_ORG_PATH=/etc/hyperledger/crypto
+      - FABRIC_CONTAINER_NUM=${FABRIC_CONTAINER_NUM}
+      - FABRIC_ENV=prod
+      - FABRIC_AVAILABLE_CONTAINERS=1,2,3,4,5,6,7,8,9,10,11,12
+    volumes:
+      - ~/fabric/organizations:/etc/hyperledger/crypto
+
+  db:
+    image: postgres:latest
+    restart: always
+    network_mode: host
+    container_name: blocc-dashboard-backend-db
+    hostname: db.dashboard.blocc.doc.ic.ac.uk
+    environment:
+      - POSTGRES_DB=blocc-dashboard-backend
+      - POSTGRES_USER=blocc-dashboard-backend
+      - POSTGRES_PASSWORD=blocc-dashboard-backend-db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U blocc-dashboard-backend"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
