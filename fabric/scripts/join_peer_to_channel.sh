@@ -57,7 +57,7 @@ configtxlator proto_encode --input ~/fabric/channel-artefacts/config_update_in_e
 peer channel update \
 -o blocc-container"$CHANNEL_NUMBER":7050 \
 -c channel"$CHANNEL_NUMBER" \
--f anchors.tx \
+-f ~/fabric/channel-artefacts/anchors.tx \
 --tls --cafile "$OSN_TLS_CA_ROOT_CERT"
 
 # Clean up generated files
