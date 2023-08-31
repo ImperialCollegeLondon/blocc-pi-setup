@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <CHANNEL_NUMBER>"
     exit 1
@@ -71,3 +73,4 @@ rm -f ~/fabric/channel-artefacts/config_block \
 ~/fabric/channel-artefacts/config_update_in_envelope.json \
 ~/fabric/channel-artefacts/anchors.tx
 
+set +x

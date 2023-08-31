@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <CHANNEL_NUMBER>"
     exit 1
@@ -33,3 +35,5 @@ peer lifecycle chaincode approveformyorg \
 peer lifecycle chaincode checkcommitreadiness \
 --channelID channel"${CHANNEL_NUMBER}" --name sensor_chaincode --version 1.0 --sequence 1 \
 --signature-policy "AND('Container${CHANNEL_NUMBER}MSP.peer')" --output json | jq
+
+set +x

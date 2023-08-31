@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <CHANNEL_NUMBER>"
     exit 1
@@ -19,3 +21,5 @@ osnadmin channel join -o localhost:7053 \
     --config-block "$HOME"/fabric/channel-artefacts/channel"${CHANNEL_NUMBER}"-genesis.block \
 --channelID channel"${CHANNEL_NUMBER}" --ca-file "$OSN_TLS_CA_ROOT_CERT" \
 --client-cert "$ADMIN_TLS_SIGN_CERT" --client-key "$ADMIN_TLS_PRIVATE_KEY"
+
+set +x
