@@ -7,7 +7,7 @@ services:
     network_mode: host
     environment:
     - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
-    - FABRIC_LOGGING_SPEC=DEBUG
+    - FABRIC_LOGGING_SPEC=INFO
     # NOTE: for BLOCC protocol
     - CORE_PEER_ADDRESS=blocc-container${FABRIC_CONTAINER_NUM}:7051
     - CORE_PEER_LOCALMSPID=Container${FABRIC_CONTAINER_NUM}MSP
@@ -36,7 +36,7 @@ services:
     image: ghcr.io/imperialcollegelondon/fabric-orderer:bloccprotocol-release
     environment:
       - FABRIC_CFG_PATH=/var/hyperledger/config
-      - FABRIC_LOGGING_SPEC=DEBUG
+      - FABRIC_LOGGING_SPEC=INFO
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       # enabled TLS
       - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
