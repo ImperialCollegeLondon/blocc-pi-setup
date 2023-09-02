@@ -29,6 +29,6 @@ peer lifecycle chaincode commit \
 --tls --cafile ${OSN_TLS_CA_ROOT_CERT} \
 --channelID channel"$CHANNEL_NUMBER" --name sensor_chaincode \
 --version 1.0 --sequence 1 \
---signature-policy "AND('Container${CHANNEL_NUMBERMSP}.peer')"
+--signature-policy "AND('Container${CHANNEL_NUMBER}MSP.peer')"
 
 set +x
