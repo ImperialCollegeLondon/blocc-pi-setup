@@ -106,7 +106,7 @@ cp ./fabric/compose/compose.yaml ~/fabric/
 
 echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
 sed -e "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" \
-    -e -e "s/\${PEER_EXTERNAL_ENDPOINT}/${peer_external_endpoint}/g" \
+    -e "s/\${PEER_EXTERNAL_ENDPOINT}/${peer_external_endpoint}/g" \
 ./fabric/config/core.yaml > ~/fabric/config/core.yaml
 
 echo -e "${C_BLUE}Adding orderer.yaml to fabric directory...${C_RESET}"
