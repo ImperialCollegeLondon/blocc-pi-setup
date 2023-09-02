@@ -5,13 +5,15 @@ set -e
 source utils.sh
 
 printHelp() {
-    echo -e "Usage: $0 ${C_BLUE}[-r] [-h]${C_RESET}"
+    echo -e "Usage: $0 ${C_BLUE}[-r] [-h] IP_SUFFIX${C_RESET}"
     echo "Options:"
     echo -e "   ${C_BLUE}-r${C_RESET}    Reboot after the script completes"
     echo -e "   ${C_BLUE}-h${C_RESET}    Display this help message"
+    echo -e "   IP_SUFFIX    Last two digits of IP for bat0 (e.g., 01)"
 }
 
 REBOOT_FLAG=0
+IP_SUFFIX=""
 
 while getopts ":rh" opt; do
     case $opt in
@@ -30,6 +32,18 @@ while getopts ":rh" opt; do
     esac
 done
 
+shift $((OPTIND-1))  # Shift off the options and optional --.
+
+
+# Retrieve IP_SUFFIX argument
+if [[ $# -gt 0 ]]; then
+    IP_SUFFIX=$1
+else
+    echo -e "${C_RED}IP_SUFFIX not provided.${C_RESET}" >&2
+    printHelp
+    exit 1
+fi
+
 echo -e "${C_BLUE}Loading batman-adv at boot time...${C_RESET}"
 if ! grep -qxF 'batman-adv' /etc/modules; then
     echo 'batman-adv' | sudo tee --append /etc/modules
@@ -40,7 +54,10 @@ install_package batctl
 echo -e "${C_BLUE}Copying the start script...${C_RESET}"
 
 mkdir -p ~/mesh
-cp ./mesh/start-batman-adv.sh ~/mesh
+mkdir -p ~/mesh
+sed "s|IP_PLACEHOLDER|192.168.199.2$IP_SUFFIX|" ./mesh/start-batman-adv.sh > ~/mesh/start-batman-adv-temp.sh
+mv ~/mesh/start-batman-adv-temp.sh ~/mesh/start-batman-adv.sh
+chmod +x ~/mesh/start-batman-adv.sh
 
 echo -e "${C_BLUE}Copying the wlan0 interface definition...${C_RESET}"
 sudo cp ./mesh/wlan0 /etc/network/interfaces.d

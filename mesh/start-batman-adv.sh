@@ -9,3 +9,5 @@ sudo batctl gw_mode client
 # Activates batman-adv interfaces
 sudo ifconfig wlan0 up
 sudo ifconfig bat0 up
+
+sudo ip addr add IP_PLACEHOLDER dev bat0
