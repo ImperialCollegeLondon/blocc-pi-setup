@@ -53,13 +53,13 @@ else
   exit 1
 fi
 
-# Calculate IP Suffix based on CHANNEL_NUMBER
-if [[ $CHANNEL_NUMBER -ge 1 && $CHANNEL_NUMBER -le 9 ]]; then
-    IP_SUFFIX=20$CHANNEL_NUMBER
-elif [[ $CHANNEL_NUMBER -ge 10 && $CHANNEL_NUMBER -le 12 ]]; then
-    IP_SUFFIX=2$CHANNEL_NUMBER
+# Calculate IP Suffix based on container_number
+if [[ $container_number -ge 1 && $container_number -le 9 ]]; then
+    IP_SUFFIX=20$container_number
+elif [[ $container_number -ge 10 && $container_number -le 12 ]]; then
+    IP_SUFFIX=2$container_number
 else
-    echo "Invalid CHANNEL_NUMBER"
+    echo "Invalid container_number"
     exit 1
 fi
 
