@@ -27,6 +27,16 @@ function setContainerEnvironmentVariable() {
   fi
 }
 
+function setEndpointEnvironmentVariable() {
+  local peer_external_endpoint="$1"
+  if ! grep -q "PEER_EXTERNAL_ENDPOINT" ~/.bashrc; then
+    echo "export PEER_EXTERNAL_ENDPOINT=$peer_external_endpoint" >> ~/.bashrc
+    echo "PEER_EXTERNAL_ENDPOINT has been set to: $peer_external_endpoint"
+  else
+    echo "PEER_EXTERNAL_ENDPOINT is already set in ~/.bashrc."
+  fi
+}
+
 pullBinaries() {
     echo -e "${C_BLUE} Downloading fabric binaries${C_RESET}"
     BINARY_FILE="hyperledger-fabric-linux-arm64-2.5.1.tar.gz"
@@ -46,7 +56,7 @@ pullBinaries() {
 
 if [[ "$1" == "$CONTAINER_FLAG"* ]]; then
   container_number="${1#*=}"
-  setContainerEnvironmentVariable "$container_number"
+  setContainerEnvironmentVariable "$container_number" 
 else
   echo -e "${C_RED}Missing container number!${C_RESET}"
   printHelp
@@ -65,6 +75,8 @@ fi
 
 # Replace hostname with static IP
 peer_external_endpoint=192.168.199.$IP_SUFFIX:7051
+
+setEndpointEnvironmentVariable "$peer_external_endpoint" 
 
 echo -e "${C_BLUE}Installing Docker...${C_RESET}"
 
