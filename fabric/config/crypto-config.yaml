@@ -10,6 +10,7 @@ OrdererOrgs:
           - blocc-container1
           - localhost
           - 127.0.0.1
+          - 192.168.199.201
 
   - Name: ContainerOrderer2
     Domain: container2.blocc.doc.ic.ac.uk
@@ -22,6 +23,7 @@ OrdererOrgs:
           - blocc-container2
           - localhost
           - 127.0.0.1
+          - 192.168.199.202
 
   - Name: ContainerOrderer3
     Domain: container3.blocc.doc.ic.ac.uk
@@ -34,6 +36,7 @@ OrdererOrgs:
           - blocc-container3
           - localhost
           - 127.0.0.1
+          - 192.168.199.203
 
   - Name: ContainerOrderer4
     Domain: container4.blocc.doc.ic.ac.uk
@@ -46,6 +49,7 @@ OrdererOrgs:
           - blocc-container4
           - localhost
           - 127.0.0.1
+          - 192.168.199.204
   
   - Name: ContainerOrderer5
     Domain: container5.blocc.doc.ic.ac.uk
@@ -58,6 +62,7 @@ OrdererOrgs:
           - blocc-container5
           - localhost
           - 127.0.0.1
+          - 192.168.199.205
 
   - Name: ContainerOrderer6
     Domain: container6.blocc.doc.ic.ac.uk
@@ -70,6 +75,7 @@ OrdererOrgs:
           - blocc-container6-orderer
           - localhost
           - 127.0.0.1
+          - 192.168.199.206
 
   - Name: ContainerOrderer7
     Domain: container7.blocc.doc.ic.ac.uk
@@ -82,6 +88,7 @@ OrdererOrgs:
           - blocc-container7-orderer
           - localhost
           - 127.0.0.1
+          - 192.168.199.207
 
   - Name: ContainerOrderer8
     Domain: container8.blocc.doc.ic.ac.uk
@@ -94,6 +101,7 @@ OrdererOrgs:
           - blocc-container8-orderer
           - localhost
           - 127.0.0.1
+          - 192.168.199.208
 
   - Name: ContainerOrderer9
     Domain: container9.blocc.doc.ic.ac.uk
@@ -106,6 +114,7 @@ OrdererOrgs:
           - blocc-container9-orderer
           - localhost
           - 127.0.0.1
+          - 192.168.199.209
 
   - Name: ContainerOrderer10
     Domain: container10.blocc.doc.ic.ac.uk
@@ -118,6 +127,7 @@ OrdererOrgs:
           - blocc-container10-orderer
           - localhost
           - 127.0.0.1
+          - 192.168.199.210
 
   - Name: ContainerOrderer11
     Domain: container11.blocc.doc.ic.ac.uk
@@ -130,6 +140,7 @@ OrdererOrgs:
           - blocc-container11-orderer
           - localhost
           - 127.0.0.1
+          - 192.168.199.211
 
   - Name: ContainerOrderer12
     Domain: container12.blocc.doc.ic.ac.uk
@@ -142,6 +153,7 @@ OrdererOrgs:
           - blocc-container12-orderer
           - localhost
           - 127.0.0.1
+          - 192.168.199.212
 
 PeerOrgs:
   - Name: Container1
@@ -154,6 +166,7 @@ PeerOrgs:
         - blocc-container1
         - localhost
         - 127.0.0.1
+        - 192.168.199.201
     Users:
       Count: 1
 
@@ -167,6 +180,7 @@ PeerOrgs:
         - blocc-container2
         - localhost
         - 127.0.0.1
+        - 192.168.199.202
     Users:
       Count: 1
 
@@ -180,6 +194,7 @@ PeerOrgs:
         - blocc-container3
         - localhost
         - 127.0.0.1
+        - 192.168.199.203
     Users:
       Count: 1
 
@@ -193,6 +208,7 @@ PeerOrgs:
         - blocc-container4
         - localhost
         - 127.0.0.1
+        - 192.168.199.204
     Users:
       Count: 1
 
@@ -206,6 +222,7 @@ PeerOrgs:
         - blocc-container5
         - localhost
         - 127.0.0.1
+        - 192.168.199.205
     Users:
       Count: 1
 
@@ -219,6 +236,7 @@ PeerOrgs:
         - blocc-container6
         - localhost
         - 127.0.0.1
+        - 192.168.199.206
     Users:
       Count: 1
 
@@ -232,6 +250,7 @@ PeerOrgs:
         - blocc-container7
         - localhost
         - 127.0.0.1
+        - 192.168.199.207
     Users:
       Count: 1
 
@@ -245,6 +264,7 @@ PeerOrgs:
         - blocc-container8
         - localhost
         - 127.0.0.1
+        - 192.168.199.208
     Users:
       Count: 1
 
@@ -258,6 +278,7 @@ PeerOrgs:
         - blocc-container9
         - localhost
         - 127.0.0.1
+        - 192.168.199.209
     Users:
       Count: 1
 
@@ -271,6 +292,7 @@ PeerOrgs:
         - blocc-container10
         - localhost
         - 127.0.0.1
+        - 192.168.199.210
     Users:
       Count: 1
 
@@ -284,6 +306,7 @@ PeerOrgs:
         - blocc-container11
         - localhost
         - 127.0.0.1
+        - 192.168.199.211
     Users:
       Count: 1
 
@@ -297,5 +320,6 @@ PeerOrgs:
         - blocc-container12
         - localhost
         - 127.0.0.1
+        - 192.168.199.212
     Users:
       Count: 1

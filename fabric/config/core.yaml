@@ -182,7 +182,7 @@ peer:
         msgExpirationFactor: 20
         # This is an endpoint that is published to peers outside of the organization.
         # If this isn't set, the peer will not be known to other organizations and will not be exposed via service discovery.
-        externalEndpoint: blocc-container${FABRIC_CONTAINER_NUM}:7051
+        externalEndpoint: ${PEER_EXTERNAL_ENDPOINT}
         # Leader election service configuration
         election:
             # Longest time peer waits for stable membership during leader election startup (unit: second)

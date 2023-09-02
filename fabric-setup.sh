@@ -53,6 +53,19 @@ else
   exit 1
 fi
 
+# Calculate IP Suffix based on CHANNEL_NUMBER
+if [[ $CHANNEL_NUMBER -ge 1 && $CHANNEL_NUMBER -le 9 ]]; then
+    IP_SUFFIX=20$CHANNEL_NUMBER
+elif [[ $CHANNEL_NUMBER -ge 10 && $CHANNEL_NUMBER -le 12 ]]; then
+    IP_SUFFIX=2$CHANNEL_NUMBER
+else
+    echo "Invalid CHANNEL_NUMBER"
+    exit 1
+fi
+
+# Replace hostname with static IP
+peer_external_endpoint=192.168.199.$IP_SUFFIX:7051
+
 echo -e "${C_BLUE}Installing Docker...${C_RESET}"
 
 install_package docker-compose
@@ -92,7 +105,9 @@ echo -e "${C_BLUE}Adding compose file to fabric directory...${C_RESET}"
 cp ./fabric/compose/compose.yaml ~/fabric/
 
 echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
-sed "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" ./fabric/config/core.yaml > ~/fabric/config/core.yaml
+sed -e "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" \
+    -e -e "s/\${PEER_EXTERNAL_ENDPOINT}/${peer_external_endpoint}/g" \
+./fabric/config/core.yaml > ~/fabric/config/core.yaml
 
 echo -e "${C_BLUE}Adding orderer.yaml to fabric directory...${C_RESET}"
 sed "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" ./fabric/config/orderer.yaml > ~/fabric/config/orderer.yaml
