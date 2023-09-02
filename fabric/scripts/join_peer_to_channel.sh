@@ -50,9 +50,10 @@ configtxlator proto_decode \
 
 jq .data.data[0].payload.data.config ~/fabric/channel-artefacts/config_block.json > ~/fabric/channel-artefacts/original.json
 
+PEER_IP=$(echo $PEER_EXTERNAL_ENDPOINT | cut -d':' -f1)
 
 # Modify the config to append the anchor peer
-jq '.channel_group.groups.Application.groups.Container'"$FABRIC_CONTAINER_NUM"'MSP.values += {"AnchorPeers":{"mod_policy": "Admins","value":{"anchor_peers": [{"host": "'"$ORDERER_IP"'","port": 7051}]},"version": "0"}}'  ~/fabric/channel-artefacts/original.json >  ~/fabric/channel-artefacts/modified.json
+jq '.channel_group.groups.Application.groups.Container'"$FABRIC_CONTAINER_NUM"'MSP.values += {"AnchorPeers":{"mod_policy": "Admins","value":{"anchor_peers": [{"host": "'"$PEER_IP"'","port": 7051}]},"version": "0"}}'  ~/fabric/channel-artefacts/original.json >  ~/fabric/channel-artefacts/modified.json
 
 
 # Takes an original and modified config, and produces the config update tx
