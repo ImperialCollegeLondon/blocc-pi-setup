@@ -15,7 +15,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer1MSP.admin')"
   OrdererEndpoints:
-  - blocc-container1:7050
+  - 192.168.199.201:7050
 
 - &ContainerOrdererOrg2
 
@@ -33,7 +33,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer2MSP.admin')"
   OrdererEndpoints:
-  - blocc-container2:7050
+  - 192.168.199.202:7050
 
 - &ContainerOrdererOrg3
 
@@ -51,7 +51,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer3MSP.admin')"
   OrdererEndpoints:
-  - blocc-container3:7050
+  - 192.168.199.203:7050
 
 - &ContainerOrdererOrg4
 
@@ -69,7 +69,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer4MSP.admin')"
   OrdererEndpoints:
-  - blocc-container4:7050
+  - 192.168.199.204:7050
 
 - &ContainerOrdererOrg5
 
@@ -87,7 +87,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer5MSP.admin')"
   OrdererEndpoints:
-  - blocc-container5:7050
+  - 192.168.199.205:7050
 
 - &ContainerOrdererOrg6
 
@@ -105,7 +105,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer6MSP.admin')"
   OrdererEndpoints:
-  - blocc-container6:7050
+  - 192.168.199.206:7050
 
 - &ContainerOrdererOrg7
 
@@ -123,7 +123,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer7MSP.admin')"
   OrdererEndpoints:
-  - blocc-container7:7050
+  - 192.168.199.207:7050
 
 - &ContainerOrdererOrg8
 
@@ -141,7 +141,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer8MSP.admin')"
   OrdererEndpoints:
-  - blocc-container8:7050
+  - 192.168.199.208:7050
 
 - &ContainerOrdererOrg9
 
@@ -159,7 +159,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer9MSP.admin')"
   OrdererEndpoints:
-  - blocc-container9:7050
+  - 192.168.199.209:7050
 
 - &ContainerOrdererOrg10
 
@@ -177,7 +177,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer10MSP.admin')"
   OrdererEndpoints:
-  - blocc-container10:7050
+  - 192.168.199.210:7050
 
 - &ContainerOrdererOrg11
 
@@ -195,7 +195,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer11MSP.admin')"
   OrdererEndpoints:
-  - blocc-container11:7050
+  - 192.168.199.211:7050
 
 - &ContainerOrdererOrg12
 
@@ -213,7 +213,7 @@ Organizations:
       Type: Signature
       Rule: "OR('ContainerOrderer12MSP.admin')"
   OrdererEndpoints:
-  - blocc-container12:7050
+  - 192.168.199.212:7050
 
 - &ContainerOrg1
   Name: Container1MSP
@@ -494,7 +494,7 @@ Orderer: &ContainerOrderer1
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container1
+    - Host: 192.168.199.201
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container1.blocc.doc.ic.ac.uk/orderers/orderer.container1.blocc.doc.ic.ac.uk/tls/server.crt
@@ -532,7 +532,7 @@ Orderer: &ContainerOrderer2
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container2
+    - Host: 192.168.199.202
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container2.blocc.doc.ic.ac.uk/orderers/orderer.container2.blocc.doc.ic.ac.uk/tls/server.crt
@@ -570,7 +570,7 @@ Orderer: &ContainerOrderer3
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container3
+    - Host: 192.168.199.203
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container3.blocc.doc.ic.ac.uk/orderers/orderer.container3.blocc.doc.ic.ac.uk/tls/server.crt
@@ -608,7 +608,7 @@ Orderer: &ContainerOrderer4
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container4
+    - Host: 192.168.199.204
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container4.blocc.doc.ic.ac.uk/orderers/orderer.container4.blocc.doc.ic.ac.uk/tls/server.crt
@@ -646,7 +646,7 @@ Orderer: &ContainerOrderer5
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container5
+    - Host: 192.168.199.205
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt
@@ -684,7 +684,7 @@ Orderer: &ContainerOrderer6
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container6
+    - Host: 192.168.199.206
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container6.blocc.doc.ic.ac.uk/orderers/orderer.container6.blocc.doc.ic.ac.uk/tls/server.crt
@@ -722,7 +722,7 @@ Orderer: &ContainerOrderer7
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container7
+    - Host: 192.168.199.207
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container7.blocc.doc.ic.ac.uk/orderers/orderer.container7.blocc.doc.ic.ac.uk/tls/server.crt
@@ -760,7 +760,7 @@ Orderer: &ContainerOrderer8
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container8
+    - Host: 192.168.199.208
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container8.blocc.doc.ic.ac.uk/orderers/orderer.container8.blocc.doc.ic.ac.uk/tls/server.crt
@@ -798,7 +798,7 @@ Orderer: &ContainerOrderer9
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container9
+    - Host: 192.168.199.209
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container9.blocc.doc.ic.ac.uk/orderers/orderer.container9.blocc.doc.ic.ac.uk/tls/server.crt
@@ -836,7 +836,7 @@ Orderer: &ContainerOrderer10
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container10
+    - Host: 192.168.199.210
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container10.blocc.doc.ic.ac.uk/orderers/orderer.container10.blocc.doc.ic.ac.uk/tls/server.crt
@@ -874,7 +874,7 @@ Orderer: &ContainerOrderer11
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container11
+    - Host: 192.168.199.211
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container11.blocc.doc.ic.ac.uk/orderers/orderer.container11.blocc.doc.ic.ac.uk/tls/server.crt
@@ -912,7 +912,7 @@ Orderer: &ContainerOrderer12
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container12
+    - Host: 192.168.199.212
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container12.blocc.doc.ic.ac.uk/orderers/orderer.container12.blocc.doc.ic.ac.uk/tls/server.crt
