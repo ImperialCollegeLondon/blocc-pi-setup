@@ -55,7 +55,7 @@ echo -e "${C_BLUE}Copying the start script...${C_RESET}"
 
 mkdir -p ~/mesh
 mkdir -p ~/mesh
-sed "s|IP_PLACEHOLDER|192.168.199.2$IP_SUFFIX|" ./mesh/start-batman-adv.sh > ~/mesh/start-batman-adv-temp.sh
+sed "s|IP_PLACEHOLDER|192.168.199.2$IP_SUFFIX/24|" ./mesh/start-batman-adv.sh > ~/mesh/start-batman-adv-temp.sh
 mv ~/mesh/start-batman-adv-temp.sh ~/mesh/start-batman-adv.sh
 chmod +x ~/mesh/start-batman-adv.sh
 
