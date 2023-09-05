@@ -18,6 +18,7 @@ services:
     - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
     - CORE_PEER_PROFILE_ENABLED=false
     # Peer specific variables
+    - CORE_PEER_FILESYSTEMPATH=/var/hyperledger/production
     - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
     - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
     volumes:
@@ -58,23 +59,3 @@ services:
       - 7050:7050 # Orderer general listen port
       - 7053:7053 # Orderer admin listen port
       - 9443:9443 # Orderer operations listen port
-
-  temp-humidity-app:
-    container_name: temp-humidity-app
-    restart: always
-    image: ghcr.io/imperialcollegelondon/blocc-pi-temp-humidity-demo:master
-    network_mode: host
-    environment:
-      - FABRIC_CONTAINER_NUM=${FABRIC_CONTAINER_NUM}
-      - FABRIC_SENSOR_MEAN_TEMPERATURE=30
-      - FABRIC_SENSOR_INTERVAL_SECOND=5
-      - FABRIC_ORG_PATH=/var/crypto
-      - FABRIC_PEER_ADDRESS=localhost:7051
-    working_dir: /app
-    volumes:
-       - ~/fabric/organizations:/var/crypto
-    depends_on:
-      - peer
-      - orderer
-
-  

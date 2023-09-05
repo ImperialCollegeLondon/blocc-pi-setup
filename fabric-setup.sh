@@ -113,8 +113,14 @@ else
   cd "$HOME/blocc-pi-setup" || exit
 fi
 
-echo -e "${C_BLUE}Adding compose file to fabric directory...${C_RESET}"
+echo -e "${C_BLUE}Adding Fabric compose file to fabric directory...${C_RESET}"
 cp ./fabric/compose/compose.yaml ~/fabric/
+
+echo -e "${C_BLUE}Adding dashbaord compose file to fabric directory...${C_RESET}"
+cp ./fabric/compose/dashboard.yaml ~/fabric/
+
+echo -e "${C_BLUE}Adding app compose file to fabric directory...${C_RESET}"
+cp ./fabric/compose/app.yaml ~/fabric/
 
 echo -e "${C_BLUE}Adding core.yaml to fabric directory...${C_RESET}"
 sed -e "s/\${FABRIC_CONTAINER_NUM}/${container_number}/g" \

@@ -10,12 +10,10 @@ services:
     depends_on:
       - backend
     environment:
-      - REACT_APP_API_ENDPOINT=http://backend.dashboard.blocc.doc.ic.ac.uk:8080
-      - REACT_APP_POLL_INTERVAL=2000
+      - REACT_APP_API_ENDPOINT=http://backend.dashboard.blocc.doc.ic.ac.uk:8081
+      - REACT_APP_POLL_INTERVAL=5000
     ports:
       - 8888:3000
-    networks:
-      - test
     healthcheck:
       test: curl --fail http://localhost:3000 || exit 1
       interval: 20s
@@ -37,7 +35,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=blocc-dashboard-backend-db
       - SPRING_PROFILES_ACTIVE=prod
       - SPRING_JPA_SHOW_SQL=false
-      - SERVER_PORT=8080
+      - SERVER_PORT=8081
       - FABRIC_ORG_PATH=/etc/hyperledger/crypto
       - FABRIC_CONTAINER_NUM=${FABRIC_CONTAINER_NUM}
       - FABRIC_ENV=prod
