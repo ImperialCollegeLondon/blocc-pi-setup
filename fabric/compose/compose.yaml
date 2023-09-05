@@ -4,7 +4,6 @@ services:
     container_name: peer
     restart: always
     image: ghcr.io/imperialcollegelondon/fabric-peer:bloccprotocol-release
-    network_mode: host
     environment:
     - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
     - FABRIC_LOGGING_SPEC=INFO
@@ -57,3 +56,20 @@ services:
       - 7050:7050 # Orderer general listen port
       - 7053:7053 # Orderer admin listen port
       - 9443:9443 # Orderer operations listen port
+
+  temp-humidity-app:
+    container_name: temp-humidity-app
+    restart: always
+    image: ghcr.io/imperialcollegelondon/blocc-pi-temp-humidity-demo:master
+    environment:
+      - FABRIC_CONTAINER_NUM=${FABRIC_CONTAINER_NUM}
+      - FABRIC_SENSOR_MEAN_TEMPERATURE=30
+      - FABRIC_SENSOR_INTERVAL_SECOND=5
+      - FABRIC_ORG_PATH=~/fabric/organizations
+      - FABRIC_PEER_ADDRESS=peer:7051
+    working_dir: /app
+    depends_on:
+      - peer
+      - orderer
+
+  
