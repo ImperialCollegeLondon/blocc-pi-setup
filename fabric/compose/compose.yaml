@@ -65,9 +65,11 @@ services:
       - FABRIC_CONTAINER_NUM=${FABRIC_CONTAINER_NUM}
       - FABRIC_SENSOR_MEAN_TEMPERATURE=30
       - FABRIC_SENSOR_INTERVAL_SECOND=5
-      - FABRIC_ORG_PATH=/home/pi/fabric/organizations
+      - FABRIC_ORG_PATH=/var/crypto
       - FABRIC_PEER_ADDRESS=peer:7051
     working_dir: /app
+    volumes:
+       - ~/fabric/organizations:/var/crypto
     depends_on:
       - peer
       - orderer
