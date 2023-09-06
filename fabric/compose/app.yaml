@@ -2,15 +2,15 @@ version: '3.7'
 services:
   temp-humidity-app:
     container_name: temp-humidity-app
-    restart: always
-    image: ghcr.io/imperialcollegelondon/blocc-pi-temp-humidity-demo:master
     network_mode: host
+    image: ghcr.io/imperialcollegelondon/blocc-pi-temp-humidity-demo:master
     environment:
       - FABRIC_CONTAINER_NUM=${FABRIC_CONTAINER_NUM}
       - FABRIC_SENSOR_MEAN_TEMPERATURE=30
       - FABRIC_SENSOR_INTERVAL_SECOND=10
       - FABRIC_ORG_PATH=/var/crypto
       - FABRIC_PEER_ADDRESS=localhost:7051
+      - FABRIC_ORDERER_ADDRESS=localhost:9443
     working_dir: /app
     volumes:
        - ~/fabric/organizations:/var/crypto
