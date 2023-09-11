@@ -138,7 +138,7 @@ peer:
         # Number of times a message is pushed to remote peers
         propagateIterations: 1
         # Number of peers selected to push messages to
-        propagatePeerNum: 3
+        propagatePeerNum: 12
         # Determines frequency of pull phases(unit: second)
         # Must be greater than digestWaitTime + responseWaitTime
         pullInterval: 4s
@@ -182,7 +182,7 @@ peer:
         msgExpirationFactor: 20
         # This is an endpoint that is published to peers outside of the organization.
         # If this isn't set, the peer will not be known to other organizations and will not be exposed via service discovery.
-        externalEndpoint: 0.0.0.0:7051
+        externalEndpoint: ${PEER_EXTERNAL_ENDPOINT}
         # Leader election service configuration
         election:
             # Longest time peer waits for stable membership during leader election startup (unit: second)
@@ -644,6 +644,7 @@ chaincode:
         cscc: enable
         lscc: enable
         qscc: enable
+        bscc: enable
 
     # Logging section for the chaincode container
     logging:
